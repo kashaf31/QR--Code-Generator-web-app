@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR-CODE GENERATOR</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">QGo</div>
+      <div>
+        <h1> QR Code Generator</h1>
+        <p class="subtitle">Create • Scan • Share</p>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center">
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <article class="panel">
+        <p class="small1">Type text, URL or any content. Pick size, colors, error-correction and optionally add a small logo (PNG/JPEG).</p>
+
+        <div class="controls">
+          <div>
+            <label for="dataInput">Text / URL</label>
+            <input id="dataInput" type="text" placeholder="e.g. https://example.com">
+          </div>
+          <div>
+            <label for="sizeInput">Size (px)</label>
+            <input id="sizeInput" type="number" value="300" min="100" max="1200">
+          </div>
+
+          <div>
+            <label for="fgColor">Foreground color</label>
+            <input id="fgColor" type="color" value="#000000">
+          </div>
+          <div>
+            <label for="bgColor">Background color</label>
+            <input id="bgColor" type="color" value="#ffffff">
+          </div>
+
+          <div>
+            <label for="ecLevel">Error correction</label>
+            <select id="ecLevel">
+              <option value="L">L — Low (7%)</option>
+              <option value="M" selected>M — Medium (15%)</option>
+              <option value="Q">Q — Quartile (25%)</option>
+              <option value="H">H — High (30%)</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="margin">Margin (quiet zone)</label>
+            <input id="margin" type="number" value="2" min="0" max="20">
+          </div>
+
+          <div>
+            <label for="logoInput">Add logo (optional)</label>
+            <input id="logoInput" type="file" accept="image/*">
+          </div>
+
+        </div>
+
+        <div style="margin-top:12px;display:flex;gap:10px;align-items:center">
+          <button class="btn" id="generateBtn">Generate</button>
+          <button class="btn ghost" id="downloadBtn" style="display:none">Download PNG</button>
+          <button class="btn ghost" id="shareBtn" style="display:none">Share</button>
+          <button class="btn ghost" id="copyLinkBtn" style="display:none">Copy Text</button>
+        </div>
+
+        <div class="generator-area" style="margin-top:16px">
+          <div class="preview card" style="flex:0 0 320px">
+            <div id="qrcodeHolder"></div>
+            <canvas id="hiddenCanvas" style="display:none"></canvas>
+            <div class="small1">Preview</div>
+          </div>
+
+          
+
+      </article>
+
+    
+    </section>
+
+    <aside>
+      <div class="card">
+        <h3>Quick actions</h3>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px">
+          <button id="example1" class="btn ghost">Example: My Portfolio URL</button>
+          <button id="example2" class="btn ghost">Example: WiFi connect text</button>
+          <button id="downloadSVG" class="btn ghost">Download via API (SVG)</button>
+        </div>
+      </div>
+      <br>
+      <br>
+      <div class="card1" >
+          <button class="btn ghost1" id="clearHistory">Clear History</button>
+
+            <div class="history card" id="historyList">
+              <div class="small">No history yet — generate a QR to save it here.</div>
+            </div>
+          </div>
+        </div>
+
+     
+    </aside>
+  </main>
+
+  <footer>
+    <small2>Made by @KASHAF AKRAM :) </small2>
+  </footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
